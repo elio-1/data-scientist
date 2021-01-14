@@ -4,29 +4,50 @@ handles = ["@jcunniet","@PaulLampon","@Aziliz31","@ssoumier","@marionsouzeau","@
 
 #Combien y a-t-il de handle dans cette array ?
 def array_length(array)
+puts "Il y a #{array.count} handles dans cette array."
 end
 #Quel est le handle le plus court de cette liste ?
 def shortest_string_in_array(array)
+	#shortest_array = []
+	puts "Le handle le plus court de cette liste est :#{array.sort_by(&:length).first}"
+	#shortest_array << shortest
+	#puts shortest_array.first
 end 
 #Combien y-a-t'il de handle contenant 5 caractères (le @ ne compte pas pour un caractère)
-def string_with_x_chara(array, number_caract)
-	puts array
-	puts number_caract
+def string_with_x_chara(array)
+	puts "Il y a #{array.select{ |word| word.size == 5}.length} handles contenant 5 caractères"
+	
 end 
 #Combien commencent par une majuscule (première lettre juste après le @) ?
 def strat_with_upppercase(array)
+	puts array.select{ |word| word[/^@[A-Z]/]}.length
+	
 end 
 #Trie la liste de handle par ordre alphabétique.
 def alphabetical_order(array)
+puts array.sort!
 end 
 #Trie la liste de handle par taille des handle (les plus petits en premiers, les plus grands après)
 def size_order_asc(array)
+puts array.sort_by(&:length)
 end 
 #Quelle est la position dans l'array de la personne @epenser ?
-def index_finder(array, string)
+def index_finder(array)
+	puts "@epenser se trouve en #{array.index('@epenser')} position"
 end 
 #Sors-moi une répartition des handle par taille de ces derniers (nombre de handle avec 1 caractère, nombre de handle avec 2 caractères, nombre de handle avec 3 caractères, etc)
 def array_by_size(array)
+	#20.times do |nombre|
+	puts "Il y a #{array.select{ |word| word.size == 1}.length} de handle avec 1 caractère"
+	puts "Il y a #{array.select{ |word| word.size == 2}.length} de handle avec 2 caractères"
+	puts "Il y a #{array.select{ |word| word.size == 3}.length} de handle avec 3 caractères"
+	puts "Il y a #{array.select{ |word| word.size == 4}.length} de handle avec 4 caractères"
+	puts "Il y a #{array.select{ |word| word.size == 5}.length} de handle avec 5 caractères"
+	puts "Il y a #{array.select{ |word| word.size == 6}.length} de handle avec 6 caractères"
+	puts "Il y a #{array.select{ |word| word.size == 7}.length} de handle avec 7 caractères"
+	puts "Il y a #{array.select{ |word| word.size == 8}.length} de handle avec 8 caractères"
+	puts "Il y a #{array.select{ |word| word.size == 9}.length} de handle avec 9 caractères"
+	puts "Il y a #{array.select{ |word| word.size > 10}.length} handle avec plus de 10 caractères"
 end 
 
 def program(array)
@@ -49,12 +70,12 @@ puts 		"""
 		user_choice = gets.chomp
 		case user_choice
 		when "1"
-			array_lenght(array)
+			array_length(array)
 		when "2"
 			shortest_string_in_array(array)
 		when "3"
-			puts "Combien de caracters?"
-			string_with_x_chara(array, gets.chomp)
+			puts "handle contenant 5 caractères:"
+			string_with_x_chara(array)
 		when "4"
 			strat_with_upppercase(array)
 		when "5"
@@ -62,8 +83,7 @@ puts 		"""
 		when "6"
 			size_order_asc(array)
 		when "7"
-			puts "Quel nom voulez-vous trouver?"
-			index_finder(array, gets.chomp)
+			index_finder(array)
 			
 		when "8"
 			array_by_size(array)
